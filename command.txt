@@ -1,0 +1,15 @@
+[train]
+
+cd /home/bru24-server/IsaacSim/isaaclab_walker
+
+OMNI_KIT_ACCEPT_EULA=YES TERM=xterm-256color \
+../IsaacLab/isaaclab.sh -p scripts/rsl_rl/train.py \
+  --task Walker-Flat --headless --logger tensorboard
+
+
+[play]
+OMNI_KIT_ACCEPT_EULA=YES TERM=xterm-256color \
+../IsaacLab/isaaclab.sh -p scripts/rsl_rl/play.py \
+  --task Walker-Flat-Play --num_envs 1 \
+  --checkpoint logs/rsl_rl/walker_flat/<run_folder>/model_<iter>.pt
+
